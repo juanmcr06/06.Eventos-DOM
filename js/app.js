@@ -30,9 +30,19 @@ nuevoEnlace.href = 'nuevo-enlace.html';
 
 nuevoEnlace.textContent = 'Un Nuevo Enlace';
 
-// Agregar una clase
+// Agregar un clase
 
 nuevoEnlace.classList.add('navegacion__enlace');
 
+const navegacion = document.querySelector('.navegacion');
+navegacion.appendChild(nuevoEnlace);  // appenChild agrega un hijo(nuevoElemento)
+
 
 console.log(nuevoEnlace);
+
+
+// Eventos
+
+console.log(1);
+console.log(2);
+console.log(5);
