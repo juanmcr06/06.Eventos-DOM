@@ -44,5 +44,38 @@ console.log(nuevoEnlace);
 // Eventos
 
 console.log(1);
+
+window.addEventListener('load', function() { // load espera que el JS y los archivos que dependen de HTML esten listos
+    console.log('Ya cargo la pagina');
+});
+
+window.addEventListener('load', imprimir);
+
+window.onload = function() {
+    console.log('Segunda opcion de evento load');
+};
+
+document.addEventListener('DOMContentLoaded', function() { // Este evento solo espera a que cargue el HTML sin importar css o imagenes.
+    console.log('Este solo espera a que cargue el HTML')
+});
 console.log(2);
 console.log(5);
+
+function imprimir() { // Se puede crear una funcion por fuera para luego utilizarla en el addEventListener
+    console.log('Usando una funcion por fuera');
+};
+
+window.onscroll = function() {
+    console.log('scrolling...');
+};
+
+
+// Seleccionar elementos y asociarles un evento
+
+const btnEnviar = document.querySelector('.boton--primario');
+
+btnEnviar.addEventListener('click', function(evento) {
+    console.log(evento);
+    evento.preventDefault(); // Muy util a la hora de validar un formulario
+    console.log('Enviando Formulario...');
+});
