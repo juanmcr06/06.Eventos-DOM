@@ -115,41 +115,30 @@ formulario.addEventListener('submit', function(evento) {
     const {nombre, email, mensaje} = datos;
 
     if(nombre === '' || email === '' || mensaje === '') {
-        mostrarError('Todos los campos son obligatorios');
+        mostrarAlerta('Todos los campos son obligatorios', 'error');
         return; // corta la ejecucion del codigo
-    } else {
-        mostrarCorrecto('Formulario enviado');
     }
+        mostrarAlerta('Formulario enviado');
+    
 
     console.log('Enviando formulario...')
 });
 
 // Mostrar el error en pantalla
 
-function mostrarError(mensaje) {
-    const error = document.createElement('P');
-    error.textContent = mensaje;
-    error.classList.add('error');
-    formulario.appendChild(error);
+function mostrarAlerta(mensaje, error = null) {
+    const alerta = document.createElement('P');
+    alerta.textContent = mensaje;
+    if(error) {
+        alerta.classList.add('error');
+    } else {
+        alerta.classList.add('correcto');
+    }
+    formulario.appendChild(alerta);
 
     // Desaparezca luego de 3 segundos
     setTimeout(() => {
-        error.remove(); //Metodo para borrar un elemento
+        alerta.remove(); //Metodo para borrar un elemento
     }, 3000)
-    console.log(error);
-}
-
-// Mostrar validacion en pantalla
-
-function mostrarCorrecto(mensaje) {
-    const correcto = document.createElement('P');
-    correcto.textContent = mensaje;
-    correcto.classList.add('correcto');
-    formulario.appendChild(correcto);
-
-    // Desaparezca luego de 3 segundos
-    setTimeout(() => {
-        correcto.remove(); //Metodo para borrar un elemento
-    }, 3000)
-    console.log(correcto);
-}
+    console.log(alerta);
+};
